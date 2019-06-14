@@ -10,6 +10,15 @@ RSpec.describe "City" do
   let!(:phone_array) {cl_first.scrape_by_city_url(scraped_city_url) }
   let!(:first_phone) {phone_array.first }
 
+  def add_items_to_city(city)
+    cl_second = CraigsList.new
+    phone_array_two = cl_second.scrape_by_city_url(city.city_url)
+    phone_array_two.each do |hash|
+      city.add_item(Item.new(hash))
+    end
+    city
+  end
+
 
 
   describe "#initialize" do
@@ -23,6 +32,17 @@ RSpec.describe "City" do
       expect(city_one_url).to eq("https://clovis.craigslist.org/")
     end
   end
+
+  describe "#add_item" do
+    it "it accpets an item, and adds it to @items instance variable for city, and it returns that item" do
+      item = Item.new(first_phone)
+      city_item = first_city.add_item(item)
+      
+      expect(first_city.items).to include(item)
+      expect(first_city.add_item(item)).to eq(city_item)
+    end
+  end
+
 
   
 
