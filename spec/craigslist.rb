@@ -106,6 +106,16 @@ RSpec.describe "CraigsList" do
     end
   end
 
+  describe "# scrape_by_city_url" do
+    it "it returns an array of hashes, each hash has info about a particular phone for ex. description,
+        price, and link where user can check it out online" do
+        city_url = cl_first.return_city_link("New Mexico", "clovis") 
+        phone_hash = cl_first.scrape_by_city_url(city_url)
+        first_phone = phone_hash.first
+        expect(first_phone).to eq(p_hash)
+    end
+  end
+
 
 end
 
