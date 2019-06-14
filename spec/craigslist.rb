@@ -90,7 +90,6 @@ RSpec.describe "CraigsList" do
     end
   end
 
-
 end
 
 
