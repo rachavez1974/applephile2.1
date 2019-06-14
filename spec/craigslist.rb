@@ -58,6 +58,13 @@ RSpec.describe "CraigsList" do
     end
   end
 
+  describe "#get_states_names" do
+    it "it uses the doc getter to access html docucment, and collects all the states names of the U.S." do
+      state_names = cl_first.get_states_names
+      expect(state_names).to include(choose_random_state)
+    end
+  end
+
   
 
 
