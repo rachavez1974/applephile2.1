@@ -45,6 +45,19 @@ class CLI
     print "\n"
   end 
 
+  def display_cities(state)
+    @state_cities = @scrape.get_state_cities(state)
+    #find max length of city and use it left justify everything else for screen output
+    max_length = @state_cities.map(&:length).max
+    @state_cities.each_with_index do |city, index|
+      print "#{index + 1}. #{city.capitalize.ljust(max_length)}   " 
+      if (index + 1) % 3 == 0
+        print "\n"
+      end
+    end
+    print "\n"
+  end
+
 
   def get_choice
     puts "Enter number to see link phone on browser.".colorize(:cyan)
