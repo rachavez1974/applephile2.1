@@ -1,8 +1,6 @@
 # Applephile
+The following gem helps a user find apple products from craigslist. The higher the price specify the newer the item.  For example, if user is looking for the newest iphone, than it should specify a higher price since new phones are more expensive.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/applephile`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
