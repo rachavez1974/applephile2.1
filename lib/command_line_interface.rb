@@ -1,6 +1,22 @@
 class CLI
   INTRO_MESSAGE = "WELCOME TO CRAIGSLIST SCRAPPER!"
 
+  def run
+    @scrape = CraigsList.new
+    puts INTRO_MESSAGE
+    choice = ""
+    while choice != "exit"      
+      choice = display_main_menu
+      if choice == "scrape"
+        get_menu_input
+        create_items_from_array(scrape_phones())
+        grab_phones
+      end
+    end
+  end
+
+
+
   def display_main_menu
     stars = "************************".colorize(:yellow)
     puts "#{stars} MAIN MENU #{stars}" 
