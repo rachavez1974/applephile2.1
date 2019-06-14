@@ -15,5 +15,9 @@ class City
     @items << item
     item
   end
+
+  def get_phones_by_price(set_price)
+    @items.select { |item| item.price.to_i >= set_price.to_i }
+  end
   
 end
