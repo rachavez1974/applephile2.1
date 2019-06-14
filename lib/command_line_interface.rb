@@ -68,6 +68,11 @@ class CLI
       @state_cities[city_number.to_i - 1] 
   end 
 
+  def scrape_apple_prodcuts
+    @scraped_city_url = @scrape.return_city_link(@state_scraped, @city_scraped)
+    @phones = @scrape.scrape_by_city_url(@scraped_city_url)
+  end
+
 
   def get_choice
     puts "Enter number to see link phone on browser.".colorize(:cyan)
