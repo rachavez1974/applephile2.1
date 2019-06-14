@@ -50,6 +50,29 @@ class CraigsList
     city_url
   end
 
+  def scrape_by_city_url(city_url)
+    items_array_of_hashes = []
+    #1. returns an array of hashes for every link (phone found) for a particular scrape criteria
+    #2. build site link with searching criteria phones with pic, new, os 
+    #3. grab all phones that meet this search criteria.
+    #4. traverse the collection, and grab each needed attribute one by one.
+    #5. build hash, and save it to array.
+    #6. return hash
+    city_url = city_url + "search/moa?hasPic=1&condition=10&mobile_os=2"
+    city_doc = Nokogiri::HTML(open(city_url))
+    grab_all_phones = city_doc.css(".result-info")
+      grab_all_phones.each do |phones|
+         phone_url = phones.css("a")[0]["href"]
+         phone_price = phones.css(".result-price").text.split("$")[1]
+         phone_description = phones.css("a").text.split("\n")[0]
+         items_array_of_hashes.push({:url => phone_url,
+                                     :price => phone_price,
+                                     :description => phone_description})
+      end
+      items_array_of_hashes
+  end
+
+
   private
 
   def cities_and_links

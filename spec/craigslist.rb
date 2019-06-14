@@ -106,7 +106,7 @@ RSpec.describe "CraigsList" do
     end
   end
 
-  describe "# scrape_by_city_url" do
+  describe "#scrape_by_city_url" do
     it "it returns an array of hashes, each hash has info about a particular phone for ex. description,
         price, and link where user can check it out online" do
         city_url = cl_first.return_city_link("New Mexico", "clovis") 
