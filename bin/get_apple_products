@@ -7,4 +7,4 @@ require_relative '../config/environment.rb'
 # (If you use this, don't forget to add pry to your Gemfile!)
 # require "pry"
 # Pry.start
-CLI.new.run
+CLI.new.display_main_menu
