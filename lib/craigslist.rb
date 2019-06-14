@@ -15,6 +15,26 @@ class CraigsList
     doc.css(".colmask").first.css("h4").collect { |st| st.text}  
   end
 
+  
+
+  def return_city_link(state, city)
+    #it returns the link of a particular city
+    #1. find state hash
+    #2. find the city
+    #3. get city's link
+    city_url = ""
+    states_cities_links.find do |key, value|  
+      if key.to_s == state
+        value.find do |city_hash|
+           if city_hash.has_key?(city) 
+            city_url = city_hash[city]
+           end
+         end
+      end
+    end
+    city_url
+  end
+
   private
 
   def cities_and_links
