@@ -15,7 +15,22 @@ class CraigsList
     doc.css(".colmask").first.css("h4").collect { |st| st.text}  
   end
 
-  
+  def get_state_cities(state_name)
+    #it returns an array of cities belonging to a particular state
+    #1. find the state first.
+    #2. then collect the state's city array, return a flatten array so only cities can be used
+    #to be displayed in CLI
+    state_cities_array = []
+    states_cities_links.each do |states, cities_links|
+      if states.to_s == state_name 
+        #collect only cities
+        state_cities_array = cities_links.collect { |city| city.keys }
+        break
+      end
+    end
+    state_cities_array.flatten!  
+
+  end
 
   def return_city_link(state, city)
     #it returns the link of a particular city
