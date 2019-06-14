@@ -15,8 +15,6 @@ class CLI
     end
   end
 
-
-
   def display_main_menu
     stars = "************************".colorize(:yellow)
     puts "#{stars} MAIN MENU #{stars}" 
@@ -24,6 +22,17 @@ class CLI
     puts "Enter \"exit\" to end program.".colorize(:yellow)
     puts "What would you like to do?".colorize(:blue)
     gets.chomp
+  end
+
+  def get_menu_input
+    display_states
+    puts "Please enter a number for the state you'd like to scrape.".colorize(:green)
+    #convert number input from user
+    @state_scraped = convert_to_state(gets.chomp)
+    display_cities(@state_scraped)
+    puts "Please enter a number for the city you'd like to scrape.".colorize(:green)
+    @city_scraped = convert_to_city(@state_scraped, gets.chomp)
+    puts "You have chosen the state of #{@state_scraped}, and the city of #{@city_scraped.capitalize}."
   end
 
 
