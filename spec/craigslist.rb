@@ -74,6 +74,23 @@ RSpec.describe "CraigsList" do
     end
   end
 
+  describe "#states_cities_links" do
+    it "it returns a hash at first level and hash has states as keys, then this hash points to array of hashes
+    every hash inside this array has a key for every city belonging to that state, and the value is the link to that city" do
+    links = cl_first.send(:states_cities_links)
+    expect(links[:Montana][0]).to include(states_cities_links_data[:Montana][0])
+    expect(links[:Montana][1]).to include(states_cities_links_data[:Montana][1])
+    expect(links[:Montana][2]).to include(states_cities_links_data[:Montana][2])
+    expect(links[:Minnesota][0]).to include(states_cities_links_data[:Minnesota][0])
+    expect(links[:Minnesota][1]).to include(states_cities_links_data[:Minnesota][1])
+    expect(links[:Minnesota][2]).to include(states_cities_links_data[:Minnesota][2])
+    expect(links[:"New Mexico"][0]).to include(states_cities_links_data[:"New Mexico"][0])
+    expect(links[:"New Mexico"][1]).to include(states_cities_links_data[:"New Mexico"][1])
+    expect(links[:"New Mexico"][2]).to include(states_cities_links_data[:"New Mexico"][2])
+    end
+  end
+
+
 end
 
 

@@ -30,5 +30,20 @@ class CraigsList
     two_dimension_city 
   end
 
+  def states_cities_links
+    #returns a array of hashes with keys equal to states, and values
+    #equal to an array of cities and their respective links
+    #{ :state1 => [{"city1" => link1}, {city2 => link2}, {city3 => link3}],
+     #  :state2 => [{}]}
+
+    states_cities_links_hash = {}
+    #proceed by states, make hash, then push into array
+    #cities index implicitly starts from the first state
+    get_states_names.each_with_index do |state, index|
+      states_cities_links_hash[state.to_sym] = cities_and_links[index]
+    end
+    states_cities_links_hash
+  end
+
 
 end
