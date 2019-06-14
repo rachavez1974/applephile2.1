@@ -35,6 +35,16 @@ class CLI
     puts "You have chosen the state of #{@state_scraped}, and the city of #{@city_scraped.capitalize}."
   end
 
+  def display_states
+    @scrape.get_states_names.each_with_index do |state, index|
+      print "#{index + 1}. #{state}    ".ljust(28) 
+      if (index + 1) % 5 == 0
+        print "\n"
+      end
+    end
+    print "\n"
+  end 
+
 
   def get_choice
     puts "Enter number to see link phone on browser.".colorize(:cyan)
