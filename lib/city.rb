@@ -10,5 +10,10 @@ class City
     @@all << self
   end
 
+  def add_item(item)
+    item.city = self
+    @items << item
+    item
+  end
   
 end
